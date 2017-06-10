@@ -33,15 +33,21 @@ for (let i = 0; i < IMAGES.length; i++) {
     imgSrc = imgSrc.slice(0, -8);
 
     let srcset = makeSrcset(imgSrc);
+    /* 1.) populate the attributes for each of the individual images*/
+    IMAGES[i].setAttribute("srcset", srcset);
     console.log(srcset);
 
     //in addition to the source atrribute we need an addition source for the image , and that is the datatype
     //--(note this attribute was custom created)
     let type = IMAGES[i].getAttribute("data-type");
 
-    let sizes = SIZES[type]; //this allows type to be filled in with the actual data-type for the image,in return we get the actual sizes attribute
+    /*this allows type to be filled in with the actual data-type for the image,
+       in return we get the actual sizes attribute*/
+    let sizes = SIZES[type];
+
+    // 1.) this grabs the current IMAGE element we working with and adds the srcset and sizes attribute with the values generated in the script
+    IMAGES[i].setAttribute("srcset", srcset);
 
     console.log(sizes);
     //console.log(type);
-
 }
