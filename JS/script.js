@@ -1,6 +1,14 @@
 // so first thing we need to create an array that holds all images on the page
 const IMAGES = document.querySelectorAll("img");
 
+//create an object and have each of the proprerties of the object map to the different sizes
+const SIZES = {
+    showcase: "100vw",
+    // that means if the width is narrower than 800px, then the width of the image will be 100vw full width , otherwise it will be 372px
+    reason: "(max-width: 799px) 100vw, 372px",
+    feature: "(max-width: 799px) 100vw, 558px",
+    story: "(max-width: 799px) 100vw, 670px",
+}; //end semicolon
 
 // because theres several image sizes, this will create the corrrect URL for the images
 function makeSrcset(imgSrc) {
@@ -30,6 +38,10 @@ for (let i = 0; i < IMAGES.length; i++) {
     //in addition to the source atrribute we need an addition source for the image , and that is the datatype
     //--(note this attribute was custom created)
     let type = IMAGES[i].getAttribute("data-type");
-    console.log(type);
+
+    let sizes = SIZES[type]; //this allows type to be filled in with the actual data-type for the image,in return we get the actual sizes attribute
+
+    console.log(sizes);
+    //console.log(type);
 
 }
